@@ -14906,6 +14906,13 @@ S:	Orphan
 F:	Documentation/devicetree/bindings/net/nfc/nxp,nci.yaml
 F:	drivers/nfc/nxp-nci
 
+NXP-SR1XX UWB DRIVER
+M: Manjunatha Venkatesh <manjunatha.venkatesh@xxxxxxx>
+S: Maintained
+F: Documentation/devicetree/bindings/uwb/nxp,uwb-sr1xx.yaml
+F: drivers/misc/nxp-sr1xx.c
+F: include/uapi/misc/sr1xx.h
+
 NXP i.MX 8MP DW100 V4L2 DRIVER
 M:	Xavier Roumegue <xavier.roumegue@oss.nxp.com>
 L:	linux-media@vger.kernel.org
