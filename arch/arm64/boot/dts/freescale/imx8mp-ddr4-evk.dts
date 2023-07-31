@@ -144,16 +144,16 @@
 		status = "okay";
 	};
 	
-	reg_usb_c_vbus: regulator-usb-c-vbus {
-		compatible = "regulator-fixed";
-		pinctrl-names = "default";
-		pinctrl-0 = <&pinctrl_usb1_vbus>;
-		regulator-name = "usb_c_vbus";
-		regulator-min-microvolt = <5000000>;
-		regulator-max-microvolt = <5000000>;
-		gpio = <&gpio1 14 GPIO_ACTIVE_HIGH>;
-		enable-active-high;
-	};
+//	reg_usb_c_vbus: regulator-usb-c-vbus {
+//		compatible = "regulator-fixed";
+//		pinctrl-names = "default";
+//		pinctrl-0 = <&pinctrl_usb1_vbus>;
+//		regulator-name = "usb_c_vbus";
+//		regulator-min-microvolt = <5000000>;
+//		regulator-max-microvolt = <5000000>;
+//		gpio = <&gpio1 14 GPIO_ACTIVE_HIGH>;
+//		enable-active-high;
+//	};
 	
 	bt_sco_codec: bt_sco_codec {
 		#sound-dai-cells = <1>;
@@ -275,20 +275,20 @@
 };
 
 
-//&clk {
-//	assigned-clocks = <&clk IMX8MP_CLK_AUDIO_AHB>,
-//			  <&clk IMX8MP_CLK_AUDIO_AXI_SRC>,
-//			  <&clk IMX8MP_AUDIO_PLL1>,
-//			  <&clk IMX8MP_AUDIO_PLL2>,
-//			  <&clk IMX8MP_VIDEO_PLL1>;
-//	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>,
-//				 <&clk IMX8MP_SYS_PLL3_OUT>;
-//	assigned-clock-rates = <400000000>,
-//			       <600000000>,
-//			       <393216000>,
-//			       <361267200>,
-//			       <1039500000>;
-//};
+&clk {
+	assigned-clocks = <&clk IMX8MP_CLK_AUDIO_AHB>,
+			  <&clk IMX8MP_CLK_AUDIO_AXI_SRC>,
+			  <&clk IMX8MP_AUDIO_PLL1>,
+			  <&clk IMX8MP_AUDIO_PLL2>,
+			  <&clk IMX8MP_VIDEO_PLL1>;
+	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>,
+				 <&clk IMX8MP_SYS_PLL3_OUT>;
+	assigned-clock-rates = <400000000>,
+			       <600000000>,
+			       <393216000>,
+			       <361267200>,
+			       <1039500000>;
+};
 
 &{/reserved-memory} {
 	linux,cma {
@@ -332,12 +332,6 @@
 &dsp {
 	status = "okay";
 };
-
-//&pwm1 {
-//	pinctrl-names = "default";
-//	pinctrl-0 = <&pinctrl_pwm1>;
-//	status = "okay";
-//};
 
 &aud2htx {
 	status = "okay";
@@ -612,68 +606,50 @@
 
 //MIPI-DSI interface
 &lcdif1 {
-//	assigned-clocks = <&clk IMX8MP_CLK_MEDIA_DISP1_PIX>,
-//				<&clk IMX8MP_CLK_MEDIA_AXI>,
-//				<&clk IMX8MP_CLK_MEDIA_APB>;
-//	assigned-clock-parents = <&clk IMX8MP_VIDEO_PLL1_OUT>,
-//				<&clk IMX8MP_SYS_PLL1_800M>,
-//				<&clk IMX8MP_SYS_PLL1_800M>;
-//	assigned-clock-rates = <0>, <400000000>, <200000000>;
+	assigned-clocks = <&clk IMX8MP_CLK_MEDIA_DISP1_PIX>,
+				<&clk IMX8MP_CLK_MEDIA_AXI>,
+				<&clk IMX8MP_CLK_MEDIA_APB>;
+	assigned-clock-parents = <&clk IMX8MP_VIDEO_PLL1_OUT>,
+				<&clk IMX8MP_SYS_PLL1_800M>,
+				<&clk IMX8MP_SYS_PLL1_800M>;
+	assigned-clock-rates = <0>, <400000000>, <200000000>;
 	
-//	status = "okay";
-	status = "disabled";
+	status = "okay";
 };
 
 
 //LVDS Interface
 &lcdif2 {
-//	assigned-clocks = <&clk IMX8MP_CLK_MEDIA_DISP2_PIX>,
-//				<&clk IMX8MP_CLK_MEDIA_AXI>,
-//				<&clk IMX8MP_CLK_MEDIA_APB>;
-//	assigned-clock-parents = <&clk IMX8MP_VIDEO_PLL1_OUT>,
-//				<&clk IMX8MP_SYS_PLL1_800M>,
-//				<&clk IMX8MP_SYS_PLL1_800M>;
-//	assigned-clock-rates = <0>, <400000000>, <200000000>;
-//	status = "okay";
+	assigned-clocks = <&clk IMX8MP_CLK_MEDIA_DISP2_PIX>,
+				<&clk IMX8MP_CLK_MEDIA_AXI>,
+				<&clk IMX8MP_CLK_MEDIA_APB>;
+	assigned-clock-parents = <&clk IMX8MP_VIDEO_PLL1_OUT>,
+				<&clk IMX8MP_SYS_PLL1_800M>,
+				<&clk IMX8MP_SYS_PLL1_800M>;
+	assigned-clock-rates = <0>, <400000000>, <200000000>;
 	status = "disabled";
 };
 
 // HDMI Interface
 &lcdif3 {
-//	assigned-clocks = <&clk IMX8MP_CLK_MEDIA_DISP2_PIX>,
-//				<&clk IMX8MP_CLK_MEDIA_AXI>,
-//				<&clk IMX8MP_CLK_MEDIA_APB>;
-//	assigned-clock-parents = <&clk IMX8MP_VIDEO_PLL1_OUT>,
-//				<&clk IMX8MP_SYS_PLL1_800M>,
-//				<&clk IMX8MP_SYS_PLL1_800M>;
-//	assigned-clock-rates = <0>, <400000000>, <200000000>;
+	assigned-clocks = <&clk IMX8MP_CLK_MEDIA_DISP2_PIX>,
+				<&clk IMX8MP_CLK_MEDIA_AXI>,
+				<&clk IMX8MP_CLK_MEDIA_APB>;
+	assigned-clock-parents = <&clk IMX8MP_VIDEO_PLL1_OUT>,
+				<&clk IMX8MP_SYS_PLL1_800M>,
+				<&clk IMX8MP_SYS_PLL1_800M>;
+	assigned-clock-rates = <0>, <400000000>, <200000000>;
 	status = "okay";
-//	status = "disabled";
 	thres-low  = <2 3>;             /* (FIFO * 2 / 3) */
 	thres-high = <3 3>;             /* (FIFO * 3 / 3) */
 };
 
-// GPIOs: LCD_STDBY, LCD_RESET
-&ldb {
-//	status = "okay";
-	status = "disabled";
-//	lvds-channel@0 {
-//		fsl,data-mapping = "spwg";
-//		fsl,data-width = <24>;
-//		status = "okay";
 
-//		port@1 {
-//			reg = <1>;
-//
-//			lvds_out: endpoint {
-//				remote-endpoint = <&panel_lvds_in>;
-//			};
-//		};
-//	};
+&ldb {
+	status = "disabled";
 };
 
 &ldb_phy {
-//	status = "okay";
 	status = "disabled";
 };
 &irqsteer_hdmi {
@@ -745,18 +721,6 @@
 	assigned-clock-rates = <196608000>;
 	status = "okay";
 };
-
-//&sai2 {
-//	#sound-dai-cells = <0>;
-//	pinctrl-names = "default";
-//	pinctrl-0 = <&pinctrl_sai2>;
-//	assigned-clocks = <&clk IMX8MP_CLK_SAI2>;
-//	assigned-clock-parents = <&clk IMX8MP_AUDIO_PLL1_OUT>;
-//	assigned-clock-rates = <12288000>;
-//	status = "okay";
-//};
-
-
 
 &sai3 {
 	#sound-dai-cells = <0>;
@@ -839,15 +803,16 @@
 	extcon = <&extcon_usb1>;
 
 	maximum-speed = "high-speed";	
-//	assigned-clocks = <&clk IMX8MP_CLK_HSIO_AXI>;
-//	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>;
-//	assigned-clock-rates = <400000000>;
+	assigned-clocks = <&clk IMX8MP_CLK_HSIO_AXI>;
+	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>;
+
+	assigned-clock-rates = <400000000>;
 
 	status = "okay";
 };
 
 &usb3_phy1 {
-	vbus-supply = <&reg_usb_c_vbus>;
+//	vbus-supply = <&reg_usb_c_vbus>;
 	fsl,phy-tx-vref-tune = <0xe>;
 	fsl,phy-tx-preemp-amp-tune = <3>;
 	fsl,phy-tx-vboost-level = <5>;
@@ -862,12 +827,12 @@
 };
 
 &usb_dwc3_1 {
-//	assigned-clocks = <&clk IMX8MP_CLK_HSIO_AXI>;
-//	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>;
-//	assigned-clock-rates = <400000000>;
+	assigned-clocks = <&clk IMX8MP_CLK_HSIO_AXI>;
+	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>;
+	assigned-clock-rates = <400000000>;
 
 //Host only settings
-	dr_mode = "host";
+//	dr_mode = "host";
 //	hnp-disable;
 //	srp-disable;
 //	adp-disable;
@@ -882,7 +847,7 @@
 	srp-disable;
 	adp-disable;
 	usb-role-switch;
-	role-switch-default-mode = "host";
+	role-switch-default-mode = "none";
 	snps,dis-u1-entry-quirk;
 	snps,dis-u2-entry-quirk;
 	status = "okay";
@@ -960,19 +925,11 @@
 			MX8MP_IOMUXC_HDMI_DDC_SDA__HDMIMIX_HDMI_SDA	0x400001c3
 			MX8MP_IOMUXC_HDMI_HPD__HDMIMIX_HDMI_HPD		0x40000019
 			MX8MP_IOMUXC_HDMI_CEC__HDMIMIX_HDMI_CEC		0x40000019
+			MX8MP_IOMUXC_GPIO1_IO01__ANAMIX_REF_CLK_24M 	0x16
 	//		MX8MP_IOMUXC_SAI1_TXD7__GPIO4_IO19 		0x106
-	//		MX8MP_IOMUXC_SAI1_TXD1__GPIO4_IO13		0x146
-	//		MX8MP_IOMUXC_SAI2_RXFS__GPIO4_IO21		0x106
 
 		>;
 	};
-
-//	pinctrl_pwm1: pwm1grp {
-//		// TODO: FUTURE: validate 0x116 flags
-//		fsl,pins = <
-//			MX8MP_IOMUXC_SAI5_MCLK__PWM1_OUT	0x116
-//		>;
-//	};
 
 	pinctrl_ecspi1: ecspi1grp {
 		fsl,pins = <
@@ -1038,20 +995,6 @@
 		>;
 	};
 
-//	pinctrl_lvds_backlight: lvds_backlightgrp {
-//		fsl,pins = <
-//			MX8MP_IOMUXC_SAI5_RXFS__GPIO3_IO19	0x116
-//		>;
-//	};
-
-//	pinctrl_mipi_dsi_en: mipi_dsi_en {
-//		// TODO: FUTURE: verify pad flags
-//		fsl,pins = <
-//			MX8MP_IOMUXC_SAI5_RXD0__GPIO3_IO21	0x1d6
-//			MX8MP_IOMUXC_SAI5_RXD1__GPIO3_IO22      0x1d6
-//		>;
-//	};
-
 
 
 	pinctrl_pmic: pmicgrp {
@@ -1072,7 +1015,6 @@
 			MX8MP_IOMUXC_SAI5_RXD0__AUDIOMIX_PDM_BIT_STREAM00	0xd6
 			MX8MP_IOMUXC_SAI5_RXD1__AUDIOMIX_PDM_BIT_STREAM01	0xd6
 			MX8MP_IOMUXC_SAI5_RXD2__AUDIOMIX_PDM_BIT_STREAM02	0xd6
-		//	MX8MP_IOMUXC_SAI5_RXD3__AUDIOMIX_PDM_BIT_STREAM03	0xd6
 		>;
 	};
 
@@ -1087,8 +1029,6 @@
 			MX8MP_IOMUXC_SPDIF_TX__GPIO5_IO03			0xd6
 			MX8MP_IOMUXC_SAI3_RXFS__AUDIOMIX_SAI3_RX_SYNC		0xd6
 			MX8MP_IOMUXC_SAI3_RXC__AUDIOMIX_SAI3_RX_BCLK		0xd6
-	//		MX8MP_IOMUXC_SAI3_RXFS__GPIO4_IO28			0xd6
-	//		MX8MP_IOMUXC_SAI3_RXC__GPIO4_IO29			0xd6
 		>;
 	};
 
@@ -1142,8 +1082,6 @@
 		fsl,pins = <
 			MX8MP_IOMUXC_UART3_RXD__UART3_DTE_TX   0x140	
 			MX8MP_IOMUXC_UART3_TXD__UART3_DTE_RX 	0x140	
-//			MX8MP_IOMUXC_SD1_RESET_B__UART3_DTE_CTS 0x140	//needs to be an input
-//			MX8MP_IOMUXC_SD1_STROBE__UART3_DTE_RTS 0x140	//needs to be an output
 		>;
 	};
 
@@ -1159,11 +1097,11 @@
 		>;
 	};
 
-	pinctrl_usb1_vbus: usb1grp {
-		fsl,pins = <
-			MX8MP_IOMUXC_GPIO1_IO14__USB2_PWR		0x19	//USB1 Power Enable
-		>;
-	};
+//	pinctrl_usb1_vbus: usb1grp {
+//		fsl,pins = <
+//			MX8MP_IOMUXC_GPIO1_IO14__USB2_PWR		0x19	//USB1 Power Enable
+//		>;
+//	};
 
 
 	pinctrl_usdhc1: usdhc1grp {
@@ -1313,24 +1251,24 @@
 };
 
 &vpu_g1 {
-//	assigned-clocks = <&clk IMX8MP_VPU_PLL>, <&clk IMX8MP_CLK_VPU_G1>, <&clk IMX8MP_CLK_VPU_BUS>;
-//	assigned-clock-parents = <0>, <&clk IMX8MP_VPU_PLL_OUT>, <&clk IMX8MP_VPU_PLL_OUT>;
-//	assigned-clock-rates = <600000000>, <600000000>, <600000000>;
+	assigned-clocks = <&clk IMX8MP_VPU_PLL>, <&clk IMX8MP_CLK_VPU_G1>, <&clk IMX8MP_CLK_VPU_BUS>;
+	assigned-clock-parents = <0>, <&clk IMX8MP_VPU_PLL_OUT>, <&clk IMX8MP_VPU_PLL_OUT>;
+	assigned-clock-rates = <600000000>, <600000000>, <600000000>;
 
 	status = "okay";
 };
 
 &vpu_g2 {
-//	assigned-clocks = <&clk IMX8MP_CLK_VPU_G2>, <&clk IMX8MP_CLK_VPU_BUS>;
-//	assigned-clock-parents = <&clk IMX8MP_SYS_PLL2_1000M>, <&clk IMX8MP_VPU_PLL_OUT>;
-//	assigned-clock-rates = <500000000>, <600000000>;
+	assigned-clocks = <&clk IMX8MP_CLK_VPU_G2>, <&clk IMX8MP_CLK_VPU_BUS>;
+	assigned-clock-parents = <&clk IMX8MP_SYS_PLL2_1000M>, <&clk IMX8MP_VPU_PLL_OUT>;
+	assigned-clock-rates = <500000000>, <600000000>;
 	status = "okay";
 };
 
 &vpu_vc8000e {
-//	assigned-clocks = <&clk IMX8MP_CLK_VPU_VC8000E>,<&clk IMX8MP_CLK_VPU_BUS>;
-//	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>, <&clk IMX8MP_VPU_PLL_OUT>;
-//	assigned-clock-rates = <400000000>, <600000000>;
+	assigned-clocks = <&clk IMX8MP_CLK_VPU_VC8000E>,<&clk IMX8MP_CLK_VPU_BUS>;
+	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>, <&clk IMX8MP_VPU_PLL_OUT>;
+	assigned-clock-rates = <400000000>, <600000000>;
 	status = "okay";
 };
 
@@ -1339,42 +1277,42 @@
 };
 
 &gpu_3d {
-//	assigned-clocks = <&clk IMX8MP_CLK_GPU3D_CORE>,
-//			  <&clk IMX8MP_CLK_GPU3D_SHADER_CORE>,
-//			  <&clk IMX8MP_CLK_GPU_AXI>,
-//			  <&clk IMX8MP_CLK_GPU_AHB>,
-//			  <&clk IMX8MP_GPU_PLL>;
-//	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>,
-//				 <&clk IMX8MP_SYS_PLL1_800M>,
-//				 <&clk IMX8MP_GPU_PLL_OUT>,
-//				 <&clk IMX8MP_SYS_PLL1_800M>;
-//	assigned-clock-rates = <800000000>, <800000000>,
-//			       <600000000>, <300000000>,
-//			       <600000000>;
+	assigned-clocks = <&clk IMX8MP_CLK_GPU3D_CORE>,
+			  <&clk IMX8MP_CLK_GPU3D_SHADER_CORE>,
+			  <&clk IMX8MP_CLK_GPU_AXI>,
+			  <&clk IMX8MP_CLK_GPU_AHB>,
+			  <&clk IMX8MP_GPU_PLL>;
+	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>,
+				 <&clk IMX8MP_SYS_PLL1_800M>,
+				 <&clk IMX8MP_GPU_PLL_OUT>,
+				 <&clk IMX8MP_SYS_PLL1_800M>;
+	assigned-clock-rates = <800000000>, <800000000>,
+			       <600000000>, <300000000>,
+			       <600000000>;
 	status = "okay";
 };
 
 &gpu_2d {
-//	assigned-clocks = <&clk IMX8MP_CLK_GPU2D_CORE>,
-//			  <&clk IMX8MP_CLK_GPU_AXI>,
-//			  <&clk IMX8MP_CLK_GPU_AHB>,
-//			  <&clk IMX8MP_GPU_PLL>;
-//	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>,
-//				 <&clk IMX8MP_GPU_PLL_OUT>,
-//				 <&clk IMX8MP_GPU_PLL_OUT>;
-//	assigned-clock-rates = <800000000>, <600000000>,
-//			       <300000000>, <600000000>;
+	assigned-clocks = <&clk IMX8MP_CLK_GPU2D_CORE>,
+			  <&clk IMX8MP_CLK_GPU_AXI>,
+			  <&clk IMX8MP_CLK_GPU_AHB>,
+			  <&clk IMX8MP_GPU_PLL>;
+	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>,
+				 <&clk IMX8MP_GPU_PLL_OUT>,
+				 <&clk IMX8MP_GPU_PLL_OUT>;
+	assigned-clock-rates = <800000000>, <600000000>,
+			       <300000000>, <600000000>;
 	status = "okay";
 };
 
 &ml_vipsi {
-//	assigned-clocks = <&clk IMX8MP_CLK_ML_CORE>,
-//			  <&clk IMX8MP_CLK_ML_AXI>,
-//			  <&clk IMX8MP_CLK_ML_AHB>;
-//	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>,
-//				 <&clk IMX8MP_SYS_PLL1_800M>,
-//				 <&clk IMX8MP_GPU_PLL_OUT>;
-//	assigned-clock-rates = <800000000>, <800000000>, <300000000>;
+	assigned-clocks = <&clk IMX8MP_CLK_ML_CORE>,
+			  <&clk IMX8MP_CLK_ML_AXI>,
+			  <&clk IMX8MP_CLK_ML_AHB>;
+	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>,
+				 <&clk IMX8MP_SYS_PLL1_800M>,
+				 <&clk IMX8MP_GPU_PLL_OUT>;
+	assigned-clock-rates = <800000000>, <800000000>, <300000000>;
 	status = "okay";
 };
 
@@ -1384,9 +1322,9 @@
 
 &mipi_csi_0 {
 	// TODO: FUTURE: validate clocks
-//	assigned-clocks = <&clk IMX8MP_CLK_MEDIA_CAM1_PIX>;
-//	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>;
-//	assigned-clock-rates = <400000000>;
+	assigned-clocks = <&clk IMX8MP_CLK_MEDIA_CAM1_PIX>;
+	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>;
+	assigned-clock-rates = <400000000>;
 
 	#address-cells = <1>;
 	#size-cells = <0>;
@@ -1417,9 +1355,9 @@
 };
 
 &isi_0 {
-//	assigned-clocks = <&clk IMX8MP_CLK_MEDIA_AXI_ROOT>,
-//			  <&clk IMX8MP_CLK_MEDIA_APB_ROOT>;
-//	assigned-clock-rates = <400000000>, <200000000>;
+	assigned-clocks = <&clk IMX8MP_CLK_MEDIA_AXI_ROOT>,
+			  <&clk IMX8MP_CLK_MEDIA_APB_ROOT>;
+	assigned-clock-rates = <400000000>, <200000000>;
 	status = "okay";
 
 	cap_device {
@@ -1432,9 +1370,9 @@
 };
 
 &isi_1 {
-//	assigned-clocks = <&clk IMX8MP_CLK_MEDIA_AXI_ROOT>,
-//			  <&clk IMX8MP_CLK_MEDIA_APB_ROOT>;
-//	assigned-clock-rates = <400000000>, <200000000>;
+	assigned-clocks = <&clk IMX8MP_CLK_MEDIA_AXI_ROOT>,
+			  <&clk IMX8MP_CLK_MEDIA_APB_ROOT>;
+	assigned-clock-rates = <400000000>, <200000000>;
 	status = "disabled";
 
 	cap_device {
@@ -1443,13 +1381,13 @@
 };
 
 &isp_0 {
-//	assigned-clocks = <&clk IMX8MP_CLK_MEDIA_ISP>;
-//	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>;
-//	assigned-clock-rates = <400000000>;
+	assigned-clocks = <&clk IMX8MP_CLK_MEDIA_ISP>;
+	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>;
+	assigned-clock-rates = <400000000>;
 };
 
 &isp_1 {
-//	assigned-clocks = <&clk IMX8MP_CLK_MEDIA_ISP>;
-//	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>;
-//	assigned-clock-rates = <400000000>;
+	assigned-clocks = <&clk IMX8MP_CLK_MEDIA_ISP>;
+	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>;
+	assigned-clock-rates = <400000000>;
 };
