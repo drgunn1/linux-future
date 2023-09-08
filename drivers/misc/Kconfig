@@ -503,6 +503,17 @@ config VCPU_STALL_DETECTOR
 	  will be called vcpu_stall_detector.
 
 	  If you do not intend to run this kernel as a guest, say N.
+	 
+config NXP_UWB
+	tristate "NXP UCI(Uwb Command Interface) protocol driver support"
+	depends on SPI
+	help
+	  This option enables the UWB driver for NXP sr1xx device.
+	  Such device supports UCI packet structure, FiRa compliant.
+
+	  Say Y here to compile support for nxp-sr1xx into the kernel or
+	  say M to compile it as a module. The module will be called
+	  nxp-sr1xx.ko
 
 source "drivers/misc/c2port/Kconfig"
 source "drivers/misc/eeprom/Kconfig"
