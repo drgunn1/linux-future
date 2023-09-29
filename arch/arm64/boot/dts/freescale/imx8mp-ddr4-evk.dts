@@ -551,7 +551,7 @@
 		pinctrl-0 = <&pinctrl_typec>;
 		reg = <0x51>;
 		interrupt-parent = <&gpio1>;
-		interrupts = <29 8>;
+		interrupts = <3 8>;
 
 		port {
 			typec_dr_sw: endpoint {
@@ -1051,7 +1051,7 @@
 				
 	pinctrl_typec: typec1grp {
 		fsl,pins = <
-			MX8MP_IOMUXC_ENET_RD3__GPIO1_IO29	0x1c4
+			MX8MP_IOMUXC_GPIO1_IO03__GPIO1_IO03	0x1c4
 		>;
 	};
 		
