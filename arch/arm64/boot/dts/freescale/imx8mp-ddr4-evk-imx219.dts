@@ -53,6 +53,11 @@
 
 };
 
+&lcdif1 {
+	status = "okay"; //enable the 7" raspi display
+	};
+	
+
 &iomuxc {
 	/delete-node/ pinctrl_csi0_pwn;
 	
