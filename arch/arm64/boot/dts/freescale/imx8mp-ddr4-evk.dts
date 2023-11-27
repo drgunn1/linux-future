@@ -34,22 +34,10 @@
 		enable-active-high;
 	};
 
-//	reg_sd1_vmmc: sd1_regulator {
-//		compatible = "regulator-fixed";
-//		regulator-name = "WIFI_PWR_EN";
-//		regulator-min-microvolt = <1800000>;
-//		regulator-max-microvolt = <1800000>;
-//		gpio = <&gpio3 6 GPIO_ACTIVE_HIGH>;
-//		startup-delay-us = <100000>;
-//		enable-active-high;
-//		regulator-always-on;
-//	};
 
 
 	usdhc1_pwrseq: usdhc1_pwrseq {
 		compatible = "mmc-pwrseq-simple";
-//		pinctrl-names = "default";
-//		pinctrl-0 = <&pinctrl_usdhc1_gpio>;
 		reset-gpios = <&gpio4 0 GPIO_ACTIVE_LOW>;
 		post-power-on-delay-ms = <80>;
 	};
@@ -77,34 +65,12 @@
 	reg_mic_enable: regulator-mic-enable {
 		compatible = "regulator-fixed";
 		regulator-name = "mic-enable";
-	//	pinctrl-names = "default";
-	//	pinctrl-0 = <&pinctrl_mic_enable>;
 		regulator-min-microvolt = <3300000>;
 		regulator-max-microvolt = <3300000>;
 		gpio = <&gpio1 22 GPIO_ACTIVE_HIGH>;
 		enable-active-high;
 		regulator-always-on;
 	};
-
-
-//	bt_reg_on: regulator-bt-reg {
-//		compatible = "regulator-fixed";
-//		regulator-name = "BT_REG_ON";
-//		regulator-min-microvolt = <1800000>;
-//		regulator-max-microvolt = <1800000>;
-//		gpio = <&gpio4 12 GPIO_ACTIVE_HIGH>;
-//		startup-delay-us = <100>;
-//		enable-active-high;
-//		regulator-always-on;
-//	}; 
-
-//	modem_reset: modem-reset {
-//		compatible = "gpio-reset";
-//		reset-gpios = <&gpio4 12 GPIO_ACTIVE_LOW>;
-//		reset-delay-us = <2000>;
-//		reset-post-delay-ms = <40>;
-//		#reset-cells = <0>;
-//	};
 
 	mipi_cam_reset: cam-reset {
 		compatible = "gpio-reset";
@@ -143,17 +109,6 @@
 		id-gpio = <&gpio1 10 GPIO_ACTIVE_HIGH>;
 		status = "okay";
 	};
-	
-//	reg_usb_c_vbus: regulator-usb-c-vbus {
-//		compatible = "regulator-fixed";
-//		pinctrl-names = "default";
-//		pinctrl-0 = <&pinctrl_usb1_vbus>;
-//		regulator-name = "usb_c_vbus";
-//		regulator-min-microvolt = <5000000>;
-//		regulator-max-microvolt = <5000000>;
-//		gpio = <&gpio1 14 GPIO_ACTIVE_HIGH>;
-//		enable-active-high;
-//	};
 	
 	bt_sco_codec: bt_sco_codec {
 		#sound-dai-cells = <1>;
@@ -211,7 +166,6 @@
 		};
 		dailink0_master: simple-audio-card,codec {
 			sound-dai = <&codectsc42a2>;
-	//		clocks = <&clk IMX8MP_CLK_SAI3>;
 			clocks = <&audio_blk_ctrl IMX8MP_CLK_AUDIO_BLK_CTRL_SAI3_MCLK1>;
 			status = "okay";
 		};
@@ -356,11 +310,6 @@
 		nxp,sr1xx-ri-gpio = <&gpio1 21 0>;	//read indicator
 		spi-max-frequency = <20000000>;
         };
-//  	spidev1: spidev@0 {
-//		reg = <0>;
-//		compatible = "lwn,bk4";
-//		spi-max-frequency = <2000000>;
-//	};
 };
 
 &ecspi2 {
@@ -493,10 +442,8 @@
 		#sound-dai-cells = <0>;
 		reg = <0x69>;
 		compatible = "tempo,tscs42A2";
-	//	clocks = <&clk IMX8MP_CLK_SAI3>;
 		clocks = <&audio_blk_ctrl IMX8MP_CLK_AUDIO_BLK_CTRL_SAI3_MCLK1>;
 		clock-names = "mclk2";
-	//	reset-gpios = <&gpio5 3 GPIO_ACTIVE_LOW>; //this is controlled by reg_audio_pwr
 		status = "okay";
 	};
 };
@@ -504,7 +451,6 @@
 &i2c3 {
 	clock-frequency = <400000>;
 	pinctrl-names = "default";
-	// TODO: FUTURE: verify pinctrl
 	pinctrl-0 = <&pinctrl_i2c3>;
 	status = "okay";
 
@@ -519,8 +465,6 @@
 		assigned-clock-parents = <&clk IMX8MP_CLK_24M>;	//12MHz clock on the MIPI camera module
 		assigned-clock-rates = <24000000>;
 		csi_id = <0>;
-	//	powerdown-gpios = <&gpio1 6 GPIO_ACTIVE_LOW>;
-	//	reset-gpios = <&gpio1 6 GPIO_ACTIVE_LOW>;
 		reset = <&mipi_cam_reset>;
 		mclk = <24000000>;
 		mclk_source = <0>;
@@ -566,9 +510,6 @@
 			data-role = "dual";
 			try-power-role = "source";
 			source-pdos = <PDO_FIXED(5000, 918, PDO_FIXED_USB_COMM)>;
-	//		sink-pdos = <PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)
-	//			     PDO_VAR(5000, 20000, 3000)>;
-	//		op-sink-microwatt = <15000000>;
 			self-powered;
 
 			ports {
@@ -597,7 +538,6 @@
 	mcp3021@4e {
 		compatible = "microchip,mcp3021";
 		reg = <0x4e>;
-		
 		reference-voltage-microvolt = <3300000>; // 3.3 V
 		status = "okay";
 	};
@@ -729,7 +669,6 @@
 	assigned-clocks = <&clk IMX8MP_CLK_SAI3>;
 	assigned-clock-parents = <&clk IMX8MP_AUDIO_PLL1_OUT>;
 	assigned-clock-rates = <12288000>;
-//	reset-gpios = <&gpio5 3 GPIO_ACTIVE_LOW>;
 	fsl,sai-mclk-direction-output;
 	/delete-property/ power-domains;
 	status = "okay";
@@ -760,7 +699,6 @@
 	assigned-clocks = <&clk IMX8MP_CLK_UART1>;
 	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_80M>;
 	fsl,uart-has-rtscts;
-//	resets = <&modem_reset>;
 	pinctrl-assert-gpios = <&gpio4 12 GPIO_ACTIVE_HIGH>;
 	status = "okay";
 };
@@ -778,7 +716,6 @@
 	pinctrl-0 = <&pinctrl_uart3>;
 	assigned-clocks = <&clk IMX8MP_CLK_UART3>;
 	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_80M>;
-//	fsl,uart-has-rtscts;
 	fsl,dte-mode;
 	status = "okay";
 };
@@ -812,7 +749,6 @@
 };
 
 &usb3_phy1 {
-//	vbus-supply = <&reg_usb_c_vbus>;
 	fsl,phy-tx-vref-tune = <0xe>;
 	fsl,phy-tx-preemp-amp-tune = <3>;
 	fsl,phy-tx-vboost-level = <5>;
@@ -830,18 +766,6 @@
 	assigned-clocks = <&clk IMX8MP_CLK_HSIO_AXI>;
 	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>;
 	assigned-clock-rates = <400000000>;
-
-//Host only settings
-//	dr_mode = "host";
-//	hnp-disable;
-//	srp-disable;
-//	adp-disable;
-//	snps,dis-u1-entry-quirk;
-//	snps,dis-u2-entry-quirk;
-//	status = "okay";
-
-
-//Dual role settings
 	dr_mode = "otg";
 	hnp-disable;
 	srp-disable;
@@ -925,9 +849,6 @@
 			MX8MP_IOMUXC_HDMI_DDC_SDA__HDMIMIX_HDMI_SDA	0x400001c3
 			MX8MP_IOMUXC_HDMI_HPD__HDMIMIX_HDMI_HPD		0x40000019
 			MX8MP_IOMUXC_HDMI_CEC__HDMIMIX_HDMI_CEC		0x40000019
-	//		MX8MP_IOMUXC_GPIO1_IO01__ANAMIX_REF_CLK_24M 	0x16
-	//		MX8MP_IOMUXC_SAI1_TXD7__GPIO4_IO19 		0x106
-
 		>;
 	};
 
@@ -1096,12 +1017,6 @@
 			MX8MP_IOMUXC_GPIO1_IO13__USB1_OC 		0x19	// Over current IRQ pin - active low
 		>;
 	};
-
-//	pinctrl_usb1_vbus: usb1grp {
-//		fsl,pins = <
-//			MX8MP_IOMUXC_GPIO1_IO14__USB2_PWR		0x19	//USB1 Power Enable
-//		>;
-//	};
 
 
 	pinctrl_usdhc1: usdhc1grp {
@@ -1321,7 +1236,6 @@
 };
 
 &mipi_csi_0 {
-	// TODO: FUTURE: validate clocks
 	assigned-clocks = <&clk IMX8MP_CLK_MEDIA_CAM1_PIX>;
 	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_800M>;
 	assigned-clock-rates = <400000000>;
@@ -1330,12 +1244,10 @@
 	#size-cells = <0>;
 	status = "okay";
 
-	// TODO: FUTURE: validate port
 	port@0 {
 		reg = <0>;
 		mipi_csi0_ep: endpoint {
 			remote-endpoint = <&ov5640_mipi_0_ep>;
-			// TODO: FUTURE: validate bus spec
 			data-lanes = <2>;
 			csis-hs-settle = <13>;
 			csis-clk-settle = <2>;
